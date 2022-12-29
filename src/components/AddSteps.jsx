@@ -1,27 +1,28 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 export const AddSteps = ({addTraining, forEdit}) => {
-  const [formData, setFormData] = useState(
-    forEdit
-      ? forEdit.training
-      : {
-          date: '',
-          distance: ''
-        }
-  )
+  const [formData, setFormData] = useState({
+    date: '',
+    distance: ''
+  })
+  useEffect(() => {
+    if (forEdit) setFormData(forEdit)
+  }, [forEdit])
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
-
-    addTraining(formData)
-    setFormData({
-      date: '',
-      distance: ''
-    })
+    if (formData.date && formData.distance) {
+      addTraining(formData)
+      setFormData({
+        date: '',
+        distance: ''
+      })
+    }
   }
 
   const handleInputChange = ({target}) => {
-    const {name, value} = target
+    let {name, value} = target
+    //if (value && name === 'distance') value = parseFloat(value).toFixed(1)
     setFormData((prevForm) => ({...prevForm, [name]: value}))
   }
 

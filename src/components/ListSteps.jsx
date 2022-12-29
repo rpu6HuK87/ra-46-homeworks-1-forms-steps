@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const ListSteps = ({trainings, setForEdit}) => {
+export const ListSteps = ({trainings, edit, del}) => {
   return (
     <table>
       <thead>
@@ -11,15 +11,13 @@ export const ListSteps = ({trainings, setForEdit}) => {
         </tr>
       </thead>
       <tbody>
-        {trainings.map((training, id) => (
+        {trainings.map((training) => (
           <tr key={training.date}>
             <td>{training.date}</td>
             <td>{training.distance}</td>
             <td>
-              <button onClick={() => setForEdit({id, training})}>
-                Редактировать
-              </button>
-              <button>Удалить</button>
+              <button onClick={() => edit(training)}>Редактировать</button>
+              <button onClick={() => del(training)}>Удалить</button>
             </td>
           </tr>
         ))}
