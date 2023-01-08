@@ -30,13 +30,19 @@ export const AddSteps = ({addTraining, forEdit}) => {
     <form onSubmit={handleSubmit} className="form">
       <div>
         <label htmlFor="date">Дата (ДД.ММ.ГГ)</label>
-        <input name="date" onChange={handleInputChange} value={formData.date} />
+        <input
+          name="date"
+          type="date"
+          onChange={handleInputChange}
+          value={formData.date}
+        />
       </div>
 
       <div>
         <label htmlFor="distance">Пройдено км</label>
         <input
           name="distance"
+          type="number"
           onChange={handleInputChange}
           value={formData.distance}
         />

@@ -1,6 +1,7 @@
 import React from 'react'
 
 export const ListSteps = ({trainings, edit, del}) => {
+  //console.log(trainings)
   return (
     <table>
       <thead>
@@ -13,7 +14,7 @@ export const ListSteps = ({trainings, edit, del}) => {
       <tbody>
         {trainings.map((training) => (
           <tr key={training.date}>
-            <td>{training.date}</td>
+            <td>{training.date.split('-').reverse().join('.')}</td>
             <td>{training.distance}</td>
             <td>
               <button onClick={() => edit(training)}>Редактировать</button>

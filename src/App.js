@@ -12,12 +12,12 @@ function App() {
     setForEdit(training)
   }
   const del = (training) => {
-    console.log('del', training)
+    //console.log('del', training)
     setTrainings((prev) => prev.filter((tr) => tr.date !== training.date))
   }
 
   const addTraining = (training) => {
-    console.log(forEdit)
+    //console.log(training)
     let newarr = trainings
     const isset = forEdit
       ? newarr.findIndex((tr) => tr.date === forEdit.date)
@@ -35,9 +35,7 @@ function App() {
 
     setTrainings(
       newarr.sort(
-        (a, b) =>
-          new Date(a.date.split('.').reverse().join('-')).getTime() -
-          new Date(b.date.split('.').reverse().join('-')).getTime()
+        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
       )
     )
   }
